@@ -1,0 +1,194 @@
+{
+    "info": {
+        "_postman_id": "132da052-89b1-4f12-a44c-51946de5c0e3",
+        "name": "pazz-test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Sample endpoint: Returns details about a particular user",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "196cf00e-f661-40d1-8c12-1a484f6dd961",
+                        "exec": [
+                            "pm.test(\"Status code is 500\", function () {",
+                            "    pm.response.to.have.status(500);",
+                            "});",
+                            "",
+                            "pm.test(\"Response time is less than 500ms\", function () {",
+                            "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                            "});",
+                            "",
+                            "pm.test(\"Code exists\", function () {",
+                            "    var jsonData = pm.response.json();",
+                            "    pm.expect(jsonData.code).to.exist;",
+                            "});",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "id": "da43b62f-309e-4d95-942f-26cae082f966",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/user?id=-59611269",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "user"
+                    ],
+                    "query": [
+                        {
+                            "key": "id",
+                            "value": "-59611269",
+                            "description": "(Required) ID of the user"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "9d444637-2f11-4a76-9c83-17896c30bc3f",
+                    "name": "Sample response: Details about a user by ID",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/user?id=-59611269",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "user"
+                            ],
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "-59611269"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "disabled": false,
+                            "description": "A link to the next page of responses",
+                            "key": "x-next",
+                            "value": "adipisicing"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"id\": -23020339,\n \"name\": \"fugiat\",\n \"tag\": \"dolor\"\n}"
+                },
+                {
+                    "id": "f5355b41-caf2-4e82-a8c8-458528477697",
+                    "name": "Unexpected error",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/user?id=-59611269",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "user"
+                            ],
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "-59611269"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"code\": 20129133,\n \"message\": \"Duis consequat\"\n}"
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "basic",
+        "basic": [
+            {
+                "key": "username",
+                "value": "<Basic Auth Username>",
+                "type": "string"
+            },
+            {
+                "key": "password",
+                "value": "<Basic Auth Password>",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "8a57720b-7146-404b-8e5c-071fad4cc420",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "id": "10054253-e01b-406a-968e-686cbfb70fab",
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "id": "00980e81-a7c3-4c31-a0ab-26855d4bb3d5",
+            "key": "baseUrl",
+            "value": "https://461c8072-22db-4388-be6c-2dd2cf9e5e52.mock.pstmn.io/"
+        }
+    ]
+}
